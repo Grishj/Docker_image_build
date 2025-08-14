@@ -1,5 +1,7 @@
-FROM node:latest
+FROM node:24-alpine3.21
+RUN npm install -g nodemon
+WORKDIR /app
 COPY . .
 RUN npm install
 EXPOSE 3000
-CMD ["node", "index.js"]
+CMD [ "npm","run", "dev" ]

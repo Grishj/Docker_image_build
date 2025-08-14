@@ -2,7 +2,48 @@
 
 ## 1. Initialize Node.js Project
 
+
+## 10. Create & Use Volumes with Containers
+
+Volumes allow you to persist data or share files between your host and the container.
+
+### Create a Volume
+
 ```bash
+docker volume create devimage_data
+```
+
+
+#### Example: Mounting a Host Directory
+
+To mount your local project directory as a volume inside the container, use:
+
+```bash
+docker run --name docker-image -p 3000:3000 --rm -v "C:/Users/joshi/Desktop/DevImage:/app" docker-first-image
+```
+
+This command mounts `C:/Users/joshi/Desktop/DevImage` from your host to `/app` inside the container, allowing changes to be reflected between your host and the running container.
+
+
+
+```bash
+docker run -p 3000:3000 -v devimage_data:/usr/src/app/data sample-docker-express-app
+```
+
+### Verify Volume Usage
+
+List volumes:
+
+```bash
+docker volume ls
+```
+
+Inspect volume:
+
+```bash
+docker volume inspect devimage_data
+```
+
 mkdir DevImage
 cd DevImage
 npm init -y
